@@ -2,9 +2,9 @@
 
 An evidence-first production incident lab for practicing root cause analysis, remediation, and verification.
 
-[![CI](https://github.com/yeabsira-mesfin/WeatherApp/actions/workflows/ci.yml/badge.svg)](https://github.com/yeabsira-mesfin/WeatherApp/actions)
+[![CI](https://github.com/yeabsira-mesfin/debug-arena/actions/workflows/ci.yml/badge.svg)](https://github.com/yeabsira-mesfin/debug-arena/actions)
 
-**Demo status:** public hosting is pending account permissions. No live URL is claimed. Run the local demo below. Intended repository slug: `debug-arena`; GitHub repository renaming is pending.
+**Demo status:** public hosting is pending account permissions. No live URL is claimed. Run the local demo below.
 
 ## Why this exists
 

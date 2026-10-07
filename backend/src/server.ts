@@ -6,7 +6,7 @@ const app = express();
 app.disable("x-powered-by");
 app.use(
   cors({
-    origin: (process.env.ALLOWED_ORIGINS || "http://localhost:5173").split(","),
+    origin: (process.env.ALLOWED_ORIGINS || "http://localhost:5173,https://yeabsira-mesfin.github.io").split(","),
   }),
 );
 app.use(express.json({ limit: "50kb" }));
@@ -58,3 +58,5 @@ if (process.env.NODE_ENV !== "test")
     console.log("DebugArena API on 8080"),
   );
 export { app };
+
+export default app;
