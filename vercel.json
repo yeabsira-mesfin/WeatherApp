@@ -16,7 +16,9 @@
     "backend": {
       "root": "backend",
       "framework": "express",
-      "entrypoint": "src/server.ts"
+      "entrypoint": "dist/server.cjs",
+      "buildCommand": "npm run build:vercel",
+      "installCommand": "npm ci"
     }
   },
   "rewrites": [
