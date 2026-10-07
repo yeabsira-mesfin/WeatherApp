@@ -4,7 +4,7 @@ An evidence-first production incident lab for practicing root cause analysis, re
 
 [![CI](https://github.com/yeabsira-mesfin/debug-arena/actions/workflows/ci.yml/badge.svg)](https://github.com/yeabsira-mesfin/debug-arena/actions)
 
-**Demo status:** public hosting is pending account permissions. No live URL is claimed. Run the local demo below.
+**Live demo:** [https://debug-arena-pearl.vercel.app/](https://debug-arena-pearl.vercel.app/) · **GitHub Pages:** [Open demo](https://yeabsira-mesfin.github.io/debug-arena/) · **API health:** [Check API](https://debug-arena-pearl.vercel.app/health)
 
 ## Why this exists
 
@@ -110,11 +110,11 @@ npm test && npm run build
 
 ## Deployment
 
-**Vercel:** import this repository with the repository root selected. `vercel.json` defines the React frontend plus the existing backend as separate services. Services are currently Beta. The Java backend uses a container runtime; the other projects retain FastAPI or Express. API routes precede the frontend catch-all. Production defaults to a same-origin API, avoiding cross-origin configuration and localhost leakage. If deploying the frontend alone, select `frontend` as root and set `VITE_API_BASE_URL` to the deployed API origin before building.
+**Vercel:** import this repository with the repository root selected. `vercel.json` defines the React frontend plus the existing backend as separate services. Services are currently Beta. The Express backend uses its existing Docker image to package runtime dependencies reliably; the frontend remains React/TypeScript. API routes precede the frontend catch-all. Production defaults to a same-origin API, avoiding cross-origin configuration and localhost leakage. If deploying the frontend alone, select `frontend` as root and set `VITE_API_BASE_URL` to the deployed API origin before building.
 
 **Alternative API hosting:** use the backend Dockerfile on a provider supporting that runtime, such as Render. Set `ALLOWED_ORIGINS` to the exact frontend URL and set the frontend public API origin. RepoDoctor accepts `PORT`; use the Dockerfile's documented port for Python/Node deployments or override the startup command.
 
-**GitHub Pages:** Pages can host only the static React frontend, not Python/Node/Java APIs. A manual Pages workflow is included. Enable Pages with GitHub Actions in repository settings, configure repository variable `PUBLIC_API_BASE_URL` with the hosted API origin, and run the workflow. The build derives its base path from the repository name so renamed repositories retain working assets. Without a hosted API it cannot provide the interactive evaluator.
+**GitHub Pages:** Pages can host only the static React frontend, not Python/Node/Java APIs. Pages is enabled with GitHub Actions. The workflow runs on main-branch pushes or manual dispatch and uses the deployed Vercel API by default. Set repository variable `PUBLIC_API_BASE_URL` to override that public origin. The build derives its base path from the repository name so renamed repositories retain working assets. Without a hosted API it cannot provide the interactive evaluator.
 
 Free-tier terms are time-sensitive. Current official references: [Vercel Hobby](https://vercel.com/docs/plans/hobby), [Vercel Services pricing](https://vercel.com/docs/services/pricing), [Render free services](https://render.com/docs/free), and [GitHub Pages limits](https://docs.github.com/en/pages/getting-started-with-github-pages/github-pages-limits). Hobby has usage caps and personal/noncommercial restrictions. Render free web services have sleep/usage limits. No provider is claimed to be permanently free.
 
@@ -126,7 +126,7 @@ Actual screenshots from the production build running locally against its backend
 
 [Mobile screenshot](docs/screenshots/mobile.webp) · [QA notes](docs/QA.md)
 
-These show curated fixture evaluations, not measured model performance. Public hosting remains pending.
+These show curated fixture evaluations, not measured model performance. Both public demos use the hosted backend. See [verified deployment checks](docs/deployment-checks.json).
 
 ## What this demonstrates professionally
 

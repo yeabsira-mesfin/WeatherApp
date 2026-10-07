@@ -15,8 +15,6 @@ type Incident = {
   symptom: string;
   evidence: string[];
   options: { id: string; label: string }[];
-  remediation: string;
-  verification: string;
 };
 
 export default function App() {
@@ -31,6 +29,7 @@ export default function App() {
     diagnosisCorrect: boolean;
     remediationCredit: number;
     verificationCredit: number;
+    reference: { remediation: string; verification: string };
   } | null>(null);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -61,6 +60,7 @@ export default function App() {
           diagnosisCorrect: boolean;
           remediationCredit: number;
           verificationCredit: number;
+    reference: { remediation: string; verification: string };
         }>("/api/incidents/" + cur.id + "/score", {
           method: "POST",
           body: JSON.stringify({ diagnosis, remediation, verification }),
@@ -212,6 +212,11 @@ export default function App() {
                     <dd>{result.verificationCredit}/20</dd>
                   </div>
                 </dl>
+                <h4>Reference remediation</h4>
+                <p>{result.reference.remediation}</p>
+                <h4>Reference verification</h4>
+                <p>{result.reference.verification}</p>
+                <p>Text credit requires two distinct reference words longer than five characters. Valid paraphrases may receive no credit.</p>
               </>
             ) : (
               <div className="waiting">

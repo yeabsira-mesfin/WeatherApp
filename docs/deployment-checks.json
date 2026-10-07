@@ -1,0 +1,33 @@
+{
+  "verified_date": "2026-10-07",
+  "kind": "deployment and synthetic fixture smoke tests, not model evaluation",
+  "vercel_url": "https://debug-arena-pearl.vercel.app/",
+  "github_pages_url": "https://yeabsira-mesfin.github.io/debug-arena/",
+  "checks": {
+    "/": {
+      "status": 200,
+      "https": true,
+      "nosniff": "nosniff"
+    },
+    "/health": {
+      "status": 200,
+      "https": true,
+      "nosniff": "nosniff"
+    },
+    "/review/example": {
+      "status": 200,
+      "https": true,
+      "nosniff": "nosniff"
+    },
+    "pages_cors": "https://yeabsira-mesfin.github.io",
+    "untrusted_cors": null,
+    "api": {
+      "status": 200,
+      "body": "[{\"id\":\"db-latency\",\"title\":\"Database latency after traffic growth\",\"service\":\"activity-api\",\"severity\":\"SEV-2\",\"symptom\":\"p95 latency rose from 180ms to 6.4s.\",\"evidence\":[\"EXPLAIN shows a sequential scan across 4.8M rows\",\"Query filters tenant_id and sorts created_at DESC\",\"CPU is normal while database I/O is saturated\"],\"options\":[{\"id\":\"index\","
+    },
+    "hidden_answers_absent": true,
+    "bundle_assets": 1,
+    "bundle_suspicions": []
+  },
+  "mobile_scope": "390x844 local production build; live browser checked at desktop viewport"
+}

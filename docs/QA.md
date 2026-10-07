@@ -6,11 +6,12 @@ Verified locally on October 6, 2026 (America/New_York). These results describe s
 
 - Current repository: https://github.com/yeabsira-mesfin/debug-arena
 - Final name: `debug-arena`. Repository rename, description, and relevant topics were applied and verified in GitHub on October 7, 2026.
-- Live demo: **not deployed**.
-- Backend/API public link: **not deployed**.
-- Vercel project creation returned HTTP 403 permission denied for the connected team. No Vercel CLI credentials were available.
-- GitHub Pages workflow is prepared for manual dispatch after enabling Pages and supplying a public API URL. Pages cannot run these backends.
-- GitHub Actions: check the latest commit's CI run; local results below are not a substitute for remote status. This report does not assume CI is green before that run finishes.
+- Live demo: https://debug-arena-pearl.vercel.app/
+- GitHub Pages: https://yeabsira-mesfin.github.io/debug-arena/
+- Backend/API health: https://debug-arena-pearl.vercel.app/health (API routes use the same origin).
+- Deployed through the existing Vercel Hobby account, using separate frontend/backend services. No paid plan or trial was selected. Services are Beta and usage caps apply.
+- GitHub Pages is enabled and its deployment workflow passed. Main-branch pushes publish the frontend; the backend remains on Vercel. Exact Pages-origin CORS is allowed.
+- GitHub Actions CI and Pages publishing both passed on the deployment commits. Check the linked workflow badges for subsequent commits.
 
 ## Tests and observed results
 
@@ -19,8 +20,9 @@ Verified locally on October 6, 2026 (America/New_York). These results describe s
 - Playwright against local production builds with real backends: desktop 1440×1000 and mobile 390×844; scoring flow, network failure feedback, refresh/deep-link behavior, and horizontal overflow checks passed. No JavaScript page errors were captured. Cross-origin local API flows passed without CORS failures.
 - Automated axe WCAG 2 A/AA and WCAG 2.1 AA checks: zero detected violations in the tested desktop result state after contrast fixes. This is not a complete accessibility certification.
 - Actual desktop/mobile screenshots are in `docs/screenshots`.
-- Local HTTP was tested. Public HTTPS, public CORS, hosting availability, and deployed frontend bundles remain unverified because deployment is blocked.
-- Dockerfiles and Compose routing were inspected. Docker builds were **not run**, since Docker is unavailable in this workspace.
+- Public Vercel HTTPS, health endpoints, API responses, SPA deep-link fallback, Pages-origin CORS, and rejection of untrusted CORS origins passed. Shipped JavaScript was scanned for credential patterns and localhost origins; no matches were found. Results are in `deployment-checks.json`.
+- Live browser scoring flows passed on Vercel and GitHub Pages. Mobile layout was verified at 390×844 in the local production build; live browser verification used the available desktop viewport.
+- Dockerfiles and Compose routing were inspected. Local Docker/Compose execution remains untested because Docker is unavailable. Vercel successfully built and ran the DebugArena and RepoDoctor backend images.
 
 ## Security checks
 
@@ -29,18 +31,18 @@ Verified locally on October 6, 2026 (America/New_York). These results describe s
 - An OpenWeatherMap API key was found in old `js/main.js` Git history. It is absent from the current application. Revoke it with the provider. History has not been rewritten; no claim of a secret-free repository history is made.
 - npm dependency audits reported zero known advisories in the frontends; DebugArena's production Node dependencies also reported zero.
 - The two Python projects were upgraded to compatible pinned packages, including Starlette and pytest, after their original versions triggered advisories. The final `pip-audit` of their shared requirements reported no known vulnerabilities.
-- Current frontend code uses `VITE_API_BASE_URL` only as a public API origin. Local QA bundles contain localhost URLs by deliberate test configuration; deploy builds must use same-origin routing or the hosted API URL. No private server credentials are intentionally passed to the frontend.
-- No user accounts or persistence are implemented. Hosting-level rate limiting/abuse protection remains a public rollout requirement.
+- Current frontend code uses `VITE_API_BASE_URL` only as a public API origin. Production Vercel builds use same-origin APIs; Pages builds use the deployed API origin. Public bundles contain no localhost API origin. No private server credentials are intentionally passed to the frontend.
+- No user accounts or persistence are implemented. Application-specific rate limiting is not implemented; platform protection and usage caps apply. Do not submit confidential source code to this public demonstration.
 
 ## Important fixes
 
-Removed reference remediation and verification from the incident-list response; validated request types and lengths; replaced substring keyword matching with distinct whole-word matching and minimum response length; added API tests and loading/error handling.
+Removed reference remediation and verification from the incident-list response; validated request types and lengths; replaced substring keyword matching with distinct whole-word matching and minimum response length; added API tests and loading/error handling. Fixed runtime dependency packaging with the existing Express Docker image. Displayed reference remediation and verification only after submission, together with the exact lexical-credit limitation.
 
 Across the projects: pinned npm dependencies and committed lockfiles; changed CI to `npm ci` and Node 22; added public env examples, explicit titles/meta tags, same-origin production routing, SPA deep-link configuration, non-root application containers, professional READMEs, keyboard focus outlines, loading/error feedback, and contrast corrections. The four backend stacks remain distinct.
 
 ## Remaining limitations
 
-The README explains each scoring method's limits. No real AI model has been evaluated and no model rankings, measured pass rates, or production performance improvements are claimed. AgentBench's test criteria are reviewer attestations; DebugArena uses a lexical heuristic; SecureCodeBench uses pattern matching; RepoDoctor uses a small curated gold set. Deployment and repository administrative settings still require account access.
+The README explains each scoring method's limits. No real AI model has been evaluated and no model rankings, measured pass rates, or production performance improvements are claimed. AgentBench's test criteria are reviewer attestations; DebugArena uses a lexical heuristic; SecureCodeBench uses pattern matching; RepoDoctor uses a small curated gold set. No benchmark scores are claimed as measured model results. Free hosting has usage limits and Services is Beta.
 
 ## Resume bullets
 
