@@ -15,10 +15,8 @@
     },
     "backend": {
       "root": "backend",
-      "framework": "express",
-      "entrypoint": "dist/server.cjs",
-      "buildCommand": "npm run build:vercel",
-      "installCommand": "npm ci"
+      "runtime": "container",
+      "entrypoint": "Dockerfile"
     }
   },
   "rewrites": [
