@@ -1,0 +1,15 @@
+{
+  "intended_name": "debug-arena",
+  "description": "Evidence-first production incident debugging lab with root-cause, remediation, and verification scoring.",
+  "topics": [
+    "ai-evaluation",
+    "debugging",
+    "software-engineering",
+    "benchmark",
+    "react",
+    "typescript",
+    "testing",
+    "ci-cd"
+  ],
+  "settings_applied": false
+}
